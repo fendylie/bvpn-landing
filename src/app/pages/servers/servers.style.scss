@@ -1,0 +1,231 @@
+// =========================================
+// Borderless VPN — Servers Page
+// =========================================
+
+$color-bg:           #ffffff;
+$color-map:          #d6eceb;
+$color-text-primary: #1a1a1a;
+$color-text-city:    #555555;
+$color-text-dns:     #777777;
+$color-accent:       #d0392b;
+$color-region-title: #2c2c2c;
+$color-feature-text: #444444;
+$color-card-border:  #eeeeee;
+$font:               'DM Sans', 'Segoe UI', system-ui, sans-serif;
+
+// Breakpoints
+$bp-sm:  480px;
+$bp-md:  640px;
+$bp-lg:  900px;
+
+:host { display: block; width: 100%; }
+
+// =========================================
+// Page shell
+// =========================================
+.servers-page {
+  position: relative;
+  background: $color-bg;
+  font-family: $font;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+// =========================================
+// World map watermark background
+// =========================================
+.servers-page__map-bg {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 900px;
+  height: 320px;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.35;
+}
+
+.map-svg {
+  width: 100%;
+  height: 100%;
+  color: $color-map;
+}
+
+// =========================================
+// Hero
+// =========================================
+.servers-hero {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 52px 24px 40px;
+}
+
+.servers-hero__title {
+  font-size: clamp(22px, 4vw, 36px);
+  font-weight: 700;
+  color: $color-text-primary;
+  margin: 0 0 24px;
+  letter-spacing: -0.02em;
+}
+
+.servers-hero__features {
+  display: inline-block;
+  text-align: center;
+}
+
+.servers-hero__features-heading {
+  font-size: 14px;
+  font-weight: 600;
+  color: $color-text-primary;
+  margin: 0 0 10px;
+}
+
+.servers-hero__features-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: flex-start;
+}
+
+.servers-hero__feature-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: $color-feature-text;
+  line-height: 1.5;
+}
+
+.servers-hero__check {
+  font-size: 15px !important;
+  width: 15px !important;
+  height: 15px !important;
+  color: $color-accent;
+  flex-shrink: 0;
+}
+
+// =========================================
+// Content area
+// =========================================
+.servers-content {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 24px 64px;
+
+  @media (max-width: $bp-sm) {
+    padding: 0 16px 48px;
+  }
+}
+
+// =========================================
+// Region section
+// =========================================
+.servers-region {
+  margin-bottom: 40px;
+}
+
+.servers-region__title {
+  font-size: clamp(18px, 3vw, 24px);
+  font-weight: 600;
+  color: $color-region-title;
+  text-align: center;
+  margin: 0 0 20px;
+  letter-spacing: -0.01em;
+}
+
+// =========================================
+// Responsive server grid
+// =========================================
+.servers-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px 24px;
+
+  @media (max-width: $bp-lg) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: $bp-sm) {
+    grid-template-columns: 1fr;
+  }
+}
+
+// =========================================
+// Server card
+// =========================================
+.server-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 8px;
+  border-radius: 6px;
+  transition: background 0.15s ease;
+  cursor: default;
+
+  &:hover {
+    background: #f6f8fa;
+  }
+}
+
+// Flag box
+.server-card__flag {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  background: #f0f4f8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: 1px solid $color-card-border;
+}
+
+.server-card__flag-emoji {
+  font-size: 26px;
+  line-height: 1;
+  // Prevent text rendering artifacts on some browsers
+  display: block;
+}
+
+// Info text
+.server-card__info {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  min-width: 0;
+}
+
+.server-card__country {
+  font-size: 14px;
+  font-weight: 600;
+  color: $color-text-primary;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.server-card__city {
+  font-size: 12.5px;
+  color: $color-text-city;
+  margin: 0;
+}
+
+.server-card__dns {
+  font-size: 11px;
+  color: $color-text-dns;
+  margin: 2px 0 0;
+  font-family: 'Courier New', monospace;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

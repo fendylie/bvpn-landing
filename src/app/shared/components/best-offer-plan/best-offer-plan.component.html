@@ -1,0 +1,38 @@
+<section class="pricing" aria-labelledby="pricing-heading">
+  <h2 class="pricing__heading" id="pricing-heading">Get the best offer today</h2>
+
+  <div class="pricing__grid" role="list">
+    @for (plan of plans; track plan.id) {
+      <article
+        class="pricing__card"
+        [class.pricing__card--featured]="plan.featured"
+        role="listitem"
+        [attr.aria-label]="plan.name + ', ' + plan.price + ' ' + plan.period"
+      >
+        <div class="pricing__card-inner">
+          <p class="pricing__plan-name">{{ plan.name }}</p>
+
+          <!-- Price -->
+          <div class="pricing__price-block">
+            <span class="pricing__price">{{ plan.price }}</span>
+            <span class="pricing__period">{{ plan.period }}</span>
+          </div>
+
+          <!-- Billing info -->
+          <p class="pricing__billing">{{ plan.billing }}</p>
+
+          <!-- CTA -->
+          <a
+            [href]="plan.ctaLink"
+            class="pricing__cta"
+            mat-raised-button
+            (click)="onPlanSelect(plan)"
+            [attr.aria-label]="'Start ' + plan.name"
+          >
+            {{ plan.ctaLabel }}
+          </a>
+        </div>
+      </article>
+    }
+  </div>
+</section>

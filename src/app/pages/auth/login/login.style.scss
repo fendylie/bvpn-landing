@@ -1,0 +1,301 @@
+$color-bg:            #f7f7f8;
+$color-card-bg:       #ffffff;
+$color-border:        #dde1e7;
+$color-border-focus:  #b0b8c4;
+$color-accent:        #d0392b;
+$color-accent-hover:  #b02d21;
+$color-accent-active: #962619;
+$color-text-primary:  #1a1a1a;
+$color-text-label:    #2c2c2c;
+$color-text-muted:    #6b7280;
+$color-link:          #3a6fd8;
+$color-error:         #d32f2f;
+$color-stripe:        rgba(0, 0, 0, 0.045);
+$font-display:        'DM Sans', 'Segoe UI', system-ui, sans-serif;
+$font-body:           'DM Sans', 'Segoe UI', system-ui, sans-serif;
+$radius-card:         6px;
+$radius-input:        4px;
+$shadow-card:         0 1px 4px rgba(0,0,0,0.07), 0 4px 16px rgba(0,0,0,0.05);
+
+.login-page {
+  position: relative;
+  min-height: 100vh;
+  background-color: $color-bg;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 60px 24px 80px;
+  overflow: hidden;
+  font-family: $font-body;
+}
+
+.login-page__stripes {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.stripe {
+  position: absolute;
+  display: block;
+  background-color: $color-stripe;
+  width: 60vw;
+  height: 900px;
+  transform-origin: center center;
+  border-radius: 2px;
+}
+
+.stripe--1 {
+  top: -200px;
+  right: -80px;
+  transform: rotate(-30deg) translateX(80px);
+  width: 55vw;
+  opacity: 0.9;
+}
+
+.stripe--2 {
+  top: -150px;
+  right: 60px;
+  transform: rotate(-30deg) translateX(80px);
+  width: 45vw;
+  opacity: 0.6;
+}
+
+.stripe--3 {
+  top: -100px;
+  right: 200px;
+  transform: rotate(-30deg) translateX(80px);
+  width: 35vw;
+  opacity: 0.5;
+}
+
+.stripe--4 {
+  top: -50px;
+  right: 350px;
+  transform: rotate(-30deg) translateX(80px);
+  width: 25vw;
+  opacity: 0.35;
+}
+
+.login-page__content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+
+  @media (max-width: 768px) {
+    margin-left: 16px;
+    margin-right: 16px;
+    max-width: 100%;
+  }
+}
+
+.login-page__title {
+  font-family: $font-display;
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 700;
+  color: $color-text-primary;
+  margin: 0 0 24px;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.login-card {
+  background: $color-card-bg;
+  border: 1px solid $color-border;
+  border-radius: $radius-card;
+  box-shadow: $shadow-card;
+  padding: 32px 36px 36px;
+  width: 100%;
+
+  @media (max-width: 480px) {
+    padding: 24px 20px;
+    border-radius: 4px;
+  }
+}
+
+.login-card__error {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #fff3f3;
+  border: 1px solid #fbc0c0;
+  border-radius: 4px;
+  padding: 10px 14px;
+  margin-bottom: 20px;
+  color: $color-error;
+  font-size: 13px;
+
+  mat-icon {
+    font-size: 18px;
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+  }
+}
+
+.login-card__form {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.login-card__field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.login-card__label {
+  font-size: 13px;
+  font-weight: 600;
+  color: $color-text-label;
+  letter-spacing: 0.01em;
+  line-height: 1;
+}
+
+.login-card__input-field {
+  width: 100%;
+
+  // Outline border style
+  .mat-mdc-text-field-wrapper {
+    background-color: #eef0f4 !important;
+  }
+
+  .mdc-notched-outline__leading,
+  .mdc-notched-outline__notch,
+  .mdc-notched-outline__trailing {
+    border-color: $color-border !important;
+    border-width: 1px !important;
+  }
+
+  &.mat-focused {
+    .mdc-notched-outline__leading,
+    .mdc-notched-outline__notch,
+    .mdc-notched-outline__trailing {
+      border-color: $color-border-focus !important;
+      border-width: 1.5px !important;
+    }
+  }
+
+  .mat-mdc-form-field-subscript-wrapper {
+    margin-top: 2px;
+  }
+
+  input.mat-mdc-input-element {
+    font-size: 14px;
+    color: $color-text-primary;
+    font-family: $font-body;
+
+    &::placeholder {
+      color: $color-text-muted;
+      opacity: 1;
+    }
+  }
+}
+
+.login-card__toggle-btn {
+  color: $color-text-muted !important;
+  width: 32px;
+  height: 32px;
+
+  mat-icon {
+    font-size: 18px;
+    width: 18px;
+    height: 18px;
+  }
+
+  &:hover {
+    color: $color-text-primary !important;
+  }
+}
+
+// =========================================
+// Actions Row
+// =========================================
+.login-card__actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.login-card__submit-btn {
+  background-color: $color-accent !important;
+  color: #ffffff !important;
+  font-family: $font-body;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  border-radius: 100px !important; // pill shape matching the design
+  padding: 0 28px !important;
+  height: 40px;
+  min-width: 100px;
+  box-shadow: none !important;
+  transition: background-color 0.18s ease, transform 0.12s ease !important;
+
+  &:hover:not([disabled]) {
+    background-color: $color-accent-hover !important;
+    transform: translateY(-1px);
+  }
+
+  &:active:not([disabled]) {
+    background-color: $color-accent-active !important;
+    transform: translateY(0);
+  }
+
+  &[disabled] {
+    opacity: 0.65;
+    cursor: not-allowed;
+  }
+
+  // Spinner inside button
+  .login-card__spinner {
+    display: inline-block;
+
+    ::ng-deep circle {
+      stroke: rgba(255,255,255,0.9) !important;
+    }
+  }
+}
+
+.login-card__forgot-link {
+  font-size: 13px;
+  color: $color-link;
+  text-decoration: none;
+  font-weight: 400;
+  transition: color 0.15s ease;
+
+  &:hover {
+    color: darken(#3a6fd8, 12%);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+}
+
+// =========================================
+// Responsive — Mobile
+// =========================================
+@media (max-width: 480px) {
+  .login-card__actions {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .login-card__submit-btn {
+    width: 100%;
+  }
+
+  .login-card__forgot-link {
+    align-self: flex-end;
+  }
+}

@@ -1,0 +1,154 @@
+<div class="contact-page">
+
+  <!-- Diagonal stripe background -->
+  <div class="contact-page__stripes" aria-hidden="true">
+    <span class="stripe stripe--1"></span>
+    <span class="stripe stripe--2"></span>
+    <span class="stripe stripe--3"></span>
+    <span class="stripe stripe--4"></span>
+  </div>
+
+  <!-- Hero -->
+  <header class="contact-page__hero">
+    <div class="contact-page__mail-icon" aria-hidden="true">
+      <mat-icon>mark_email_unread</mat-icon>
+    </div>
+    <h1 class="contact-page__title">Submit a request</h1>
+    <p class="contact-page__subtitle">
+      Please fill in this form with as much detail as possible.
+      It will help us provide you with the most accurate solution.
+    </p>
+  </header>
+
+  <!-- Content grid -->
+  <div class="contact-page__body">
+
+    <!-- Left: Office hours -->
+    <aside class="contact-hours" aria-label="Support hours">
+      <p class="contact-hours__days">Monday - Saturday</p>
+      <p class="contact-hours__time">08:00 - 16:00</p>
+    </aside>
+
+    <!-- Right: Form -->
+    <section class="contact-form-wrap" aria-labelledby="form-heading">
+      <h2 class="contact-form-wrap__heading" id="form-heading">Help and Support</h2>
+
+      <form
+        [formGroup]="form"
+        (ngSubmit)="onSendEmail()"
+        class="contact-form"
+        novalidate
+      >
+        <!-- Requester -->
+        <mat-form-field appearance="outline" class="contact-form__field">
+          <mat-icon matPrefix class="contact-form__prefix-icon">mail_outline</mat-icon>
+          <input
+            matInput
+            id="requester"
+            type="email"
+            formControlName="requester"
+            placeholder="Requester *"
+            autocomplete="email"
+          />
+          @if (form.get('requester')?.invalid && form.get('requester')?.touched) {
+            <mat-error>Valid email is required</mat-error>
+          }
+        </mat-form-field>
+
+        <!-- Subject -->
+        <mat-form-field appearance="outline" class="contact-form__field">
+          <mat-icon matPrefix class="contact-form__prefix-icon">schedule</mat-icon>
+          <input
+            matInput
+            id="subject"
+            type="text"
+            formControlName="subject"
+            placeholder="Subject *"
+          />
+          @if (form.get('subject')?.invalid && form.get('subject')?.touched) {
+            <mat-error>Subject is required</mat-error>
+          }
+        </mat-form-field>
+
+        <!-- Rich text toolbar (UI only) -->
+        <div class="contact-form__toolbar" role="toolbar" aria-label="Text formatting options">
+          @for (action of toolbarActions; track action.icon) {
+            <button
+              type="button"
+              class="contact-form__toolbar-btn"
+              [attr.aria-label]="action.label"
+              [title]="action.label"
+            >
+              <mat-icon>{{ action.icon }}</mat-icon>
+            </button>
+          }
+        </div>
+
+        <!-- Message body -->
+        <mat-form-field appearance="outline" class="contact-form__field contact-form__field--textarea">
+          <textarea
+            matInput
+            id="message"
+            formControlName="message"
+            rows="6"
+            placeholder="Describe your issue..."
+            aria-label="Message body"
+          ></textarea>
+          @if (form.get('message')?.invalid && form.get('message')?.touched) {
+            <mat-error>Please enter at least 10 characters</mat-error>
+          }
+        </mat-form-field>
+
+        <!-- reCAPTCHA placeholder -->
+        <div class="contact-form__captcha" role="region" aria-label="reCAPTCHA verification">
+          <div class="captcha-box">
+            <div class="captcha-box__check">
+              <div class="captcha-box__checkbox" aria-hidden="true"></div>
+              <span class="captcha-box__label">I'm not a robot</span>
+            </div>
+            <div class="captcha-box__brand" aria-hidden="true">
+              <span class="captcha-box__brand-logo">reCAPTCHA</span>
+              <span class="captcha-box__brand-links">Privacy · Terms</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Footer row -->
+        <div class="contact-form__footer">
+          <div class="contact-form__footer-links">
+            <a href="#" class="contact-form__meta-link">Help Desk Software</a>
+            <span class="contact-form__meta-sep"> by Freshdesk</span>
+            <br>
+            <a href="#" class="contact-form__meta-link">Privacy Policy</a>
+          </div>
+
+          <button
+            mat-raised-button
+            type="submit"
+            class="contact-form__submit-btn"
+            (click)="onSendEmail()"
+            aria-label="Send email"
+          >
+            Send email
+          </button>
+        </div>
+
+      </form>
+    </section>
+
+  </div>
+
+  <!-- Social links row -->
+  <div class="contact-socials">
+    @for (link of socialLinks; track link.label) {
+      <a
+        [href]="link.href"
+        class="contact-socials__btn"
+        [attr.aria-label]="link.label"
+      >
+        <mat-icon class="contact-socials__icon" aria-hidden="true">{{ link.icon }}</mat-icon>
+        <span>{{ link.label }}</span>
+      </a>
+    }
+  </div>
+</div>

@@ -1,0 +1,97 @@
+<div class="login-page">
+  <div class="login-page__stripes" aria-hidden="true">
+    <span class="stripe stripe--1"></span>
+    <span class="stripe stripe--2"></span>
+    <span class="stripe stripe--3"></span>
+    <span class="stripe stripe--4"></span>
+  </div>
+
+  <!-- Login card -->
+  <main class="login-page__content">
+    <h1 class="login-page__title">Login</h1>
+
+    <div class="login-card" role="region" aria-label="Login form">
+      @if (loginError()) {
+        <div class="login-card__error" role="alert">
+          <mat-icon aria-hidden="true">error_outline</mat-icon>
+          <span>{{ loginError() }}</span>
+        </div>
+      }
+
+      <form
+        [formGroup]="form"
+        (ngSubmit)="onSubmit()"
+        class="login-card__form"
+        novalidate
+      >
+        <div class="login-card__field">
+          <label class="login-card__label" for="email">Email address</label>
+          <mat-form-field appearance="outline" class="login-card__input-field">
+            <input
+              matInput
+              id="email"
+              type="email"
+              formControlName="email"
+              placeholder="test@gmail.com"
+              autocomplete="email"
+              [attr.aria-describedby]="form.get('email')?.invalid && form.get('email')?.touched ? 'email-error' : null"
+            />
+            @if (form.get('email')?.invalid && form.get('email')?.touched) {
+              <mat-error id="email-error">{{ getEmailError() }}</mat-error>
+            }
+          </mat-form-field>
+        </div>
+
+        <div class="login-card__field">
+          <label class="login-card__label" for="password">Password</label>
+          <mat-form-field appearance="outline" class="login-card__input-field">
+            <input
+              matInput
+              id="password"
+              [type]="hidePassword() ? 'password' : 'text'"
+              formControlName="password"
+              placeholder="••••••••••"
+              autocomplete="current-password"
+              [attr.aria-describedby]="form.get('password')?.invalid && form.get('password')?.touched ? 'password-error' : null"
+            />
+            <button
+              matSuffix
+              mat-icon-button
+              type="button"
+              class="login-card__toggle-btn"
+              (click)="togglePassword()"
+              [attr.aria-label]="hidePassword() ? 'Show password' : 'Hide password'"
+              [attr.aria-pressed]="!hidePassword()"
+            >
+              <mat-icon>{{ hidePassword() ? 'visibility_off' : 'visibility' }}</mat-icon>
+            </button>
+            @if (form.get('password')?.invalid && form.get('password')?.touched) {
+              <mat-error id="password-error">{{ getPasswordError() }}</mat-error>
+            }
+          </mat-form-field>
+        </div>
+
+        <!-- Actions row -->
+        <div class="login-card__actions">
+          <button
+            mat-raised-button
+            type="submit"
+            class="login-card__submit-btn"
+            [disabled]="isLoading()"
+            aria-label="Login to your account"
+          >
+            @if (isLoading()) {
+              <mat-spinner diameter="18" class="login-card__spinner"></mat-spinner>
+            } @else {
+              Login
+            }
+          </button>
+
+          <a href="/forgot-password" class="login-card__forgot-link" aria-label="Reset your password">
+            Lost your password?
+          </a>
+        </div>
+      </form>
+    </div>
+  </main>
+</div>

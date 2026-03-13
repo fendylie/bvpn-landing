@@ -1,0 +1,39 @@
+<div class="accordion" [attr.aria-label]="categoryTitle + ' FAQ'">
+  @for (item of items; track item.id; let i = $index) {
+    <div
+      class="accordion__item"
+      [class.accordion__item--open]="isOpen(item.id)"
+    >
+      <button
+        class="accordion__trigger"
+        type="button"
+        (click)="toggle(item.id)"
+        [attr.aria-expanded]="isOpen(item.id)"
+        [attr.aria-controls]="'panel-' + item.id"
+        [id]="'btn-' + item.id"
+      >
+        <span class="accordion__index">{{ i + 1 }}</span>
+        <span class="accordion__label">{{ item.label }}</span>
+        <mat-icon
+          class="accordion__icon"
+          [class.accordion__icon--open]="isOpen(item.id)"
+          aria-hidden="true"
+        >add</mat-icon>
+      </button>
+
+      @if (isOpen(item.id)) {
+        <div
+          class="accordion__panel"
+          [@expandCollapse]
+          role="region"
+          [id]="'panel-' + item.id"
+          [attr.aria-labelledby]="'btn-' + item.id"
+        >
+          <div class="accordion__panel-inner">
+            {{ item.content || 'Content coming soon.' }}
+          </div>
+        </div>
+      }
+    </div>
+  }
+</div>

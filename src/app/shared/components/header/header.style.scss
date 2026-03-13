@@ -1,0 +1,41 @@
+$bg-dark:     #1a1a1a;
+$bg-darker:   #141414;
+$accent:      #e8400c;
+$accent-hover:#ff5722;
+$text-nav:    #d4d4d4;
+$text-hover:  #ffffff;
+$font:        'Inter', 'Segoe UI', sans-serif;
+
+#sb-main-header {
+  background-color: $bg-dark;
+  height: 64px;
+  padding: 0 24px;
+  font-family: $font;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: $text-nav;
+}
+
+.right-nav {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  .nav {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    .nav-item {
+      .nav-link {
+        cursor: pointer;
+        font-size: 14px;
+        text-decoration: none;
+        color: white;
+      }
+    }
+  }
+}
+

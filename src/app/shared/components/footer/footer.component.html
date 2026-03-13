@@ -1,0 +1,95 @@
+<footer class="footer">
+  <div class="footer__container">
+    <div class="footer__col footer__col--brand">
+      <div class="footer__logo">
+        <div class="footer__logo-icon" aria-hidden="true">
+          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" width="40" height="40">
+            <rect width="40" height="40" rx="8" fill="#C0392B"/>
+            <path d="M20 8L30 14V22C30 27.5 25.5 32.5 20 34C14.5 32.5 10 27.5 10 22V14L20 8Z" fill="white" opacity="0.9"/>
+            <path d="M20 12L27 16.5V22C27 26 23.8 29.8 20 31.2C16.2 29.8 13 26 13 22V16.5L20 12Z" fill="#C0392B"/>
+            <text x="20" y="26" text-anchor="middle" fill="white" font-size="10" font-weight="bold" font-family="sans-serif">B</text>
+          </svg>
+        </div>
+        <div class="footer__logo-text">
+          <span class="footer__logo-name">BORDERLESS</span>
+          <span class="footer__logo-subtitle">VIRTUAL PRIVATE NETWORK</span>
+        </div>
+      </div>
+
+      <div class="footer__support">
+        <h3 class="footer__support-heading">
+          Need <span class="footer__support-highlight">support?</span>
+        </h3>
+        <p class="footer__support-subtext">Let us know if you have a question.</p>
+        <ui-button [label]="'Contact Us'" />
+      </div>
+    </div>
+
+    <div class="footer__col footer__col--about">
+      <h4 class="footer__col-title">About us</h4>
+
+      <div class="footer__company-info">
+        <p class="footer__company-name">
+          Borderless AS <span class="footer__company-reg">- 919 916 427</span>
+        </p>
+        <p class="footer__company-location">Kristiansand, Norway</p>
+      </div>
+
+      <mat-divider class="footer__divider"></mat-divider>
+
+      <ul class="footer__links" role="list">
+        @for (link of aboutLinks; track link.label) {
+          <li>
+            <a [href]="link.href" class="footer__link" [attr.aria-label]="link.label">
+              <mat-icon class="footer__link-icon" aria-hidden="true">{{ link.icon }}</mat-icon>
+              <span>{{ link.label }}</span>
+            </a>
+          </li>
+        }
+      </ul>
+    </div>
+
+    <div class="footer__col footer__col--platforms">
+      <h4 class="footer__col-title">Get started</h4>
+
+      <ul class="footer__links" role="list">
+        @for (link of platformLinks; track link.label) {
+          <li>
+            <a [href]="link.href" class="footer__link" [attr.aria-label]="link.label">
+              <mat-icon class="footer__link-icon" aria-hidden="true">{{ link.icon }}</mat-icon>
+              <span>{{ link.label }}</span>
+            </a>
+          </li>
+        }
+      </ul>
+
+      <div class="footer__store-badges">
+        <a href="#" class="footer__store-badge" aria-label="Get it on Google Play">
+          <div class="footer__store-badge-inner">
+            <mat-icon class="footer__store-icon" aria-hidden="true">android</mat-icon>
+            <div class="footer__store-text">
+              <span class="footer__store-label">GET IT ON</span>
+              <span class="footer__store-name">Google Play</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="#" class="footer__store-badge" aria-label="Download on the App Store">
+          <div class="footer__store-badge-inner">
+            <mat-icon class="footer__store-icon" aria-hidden="true">apple</mat-icon>
+            <div class="footer__store-text">
+              <span class="footer__store-label">Download on the</span>
+              <span class="footer__store-name">App Store</span>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer__bottom">
+    <p class="footer__copyright">
+      &copy; {{ currentYear }} Borderless AS. All rights reserved.
+    </p>
+  </div>
+</footer>

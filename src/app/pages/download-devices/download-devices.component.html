@@ -1,0 +1,64 @@
+<div class="downloads-page">
+
+  <!-- Top nav label -->
+  <div class="downloads-page__connect" aria-hidden="true">Connect</div>
+
+  @for (section of sections; track section.id) {
+    <section
+      class="downloads-section"
+      [class.downloads-section--alt]="section.id === 'alternative'"
+      [attr.aria-labelledby]="'section-' + section.id"
+    >
+      <!-- Section heading -->
+      <div class="downloads-section__header">
+        <h2
+          class="downloads-section__title"
+          [id]="'section-' + section.id"
+          [class.downloads-section__title--alt]="section.id === 'alternative'"
+        >
+          {{ section.title }}
+        </h2>
+
+        @if (section.description) {
+          <p class="downloads-section__desc">
+            @for (line of section.description.split('\n'); track $index) {
+              {{ line }}<br>
+            }
+          </p>
+        }
+      </div>
+
+      <!-- Download rows -->
+      <ul class="downloads-section__list" role="list">
+        @for (item of section.items; track item.id) {
+          <li class="downloads-row" role="listitem">
+
+            <!-- Download button -->
+            <a
+              [href]="item.downloadLink"
+              class="downloads-btn downloads-btn--download"
+              (click)="onDownload(item)"
+              [attr.aria-label]="'Download ' + item.label"
+            >
+              <mat-icon class="downloads-btn__icon" aria-hidden="true">{{ item.icon }}</mat-icon>
+              <span>{{ item.label }}</span>
+            </a>
+
+            <!-- How to install button -->
+            <a
+              [href]="item.installLink"
+              class="downloads-btn downloads-btn--install"
+              (click)="onInstall(item)"
+              [attr.aria-label]="'How to install ' + item.label"
+            >
+              <mat-icon class="downloads-btn__icon" aria-hidden="true">{{ item.icon }}</mat-icon>
+              <span>How to install</span>
+            </a>
+
+          </li>
+        }
+      </ul>
+    </section>
+  }
+
+</div>

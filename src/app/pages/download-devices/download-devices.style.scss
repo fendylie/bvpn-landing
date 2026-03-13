@@ -1,0 +1,129 @@
+$color-bg:          #ffffff;
+$color-accent:      #d44b2a;
+$color-accent-dark: #b83d21;
+$color-accent-text: #ffffff;
+$color-connect:     #d44b2a;
+$color-text-head:   #1a1a1a;
+$color-text-desc:   #555555;
+$color-alt-label:   #777777;
+$font:              'DM Sans', 'Segoe UI', system-ui, sans-serif;
+$radius-btn:        100px;
+$btn-height:        48px;
+
+:host {
+  display: block;
+  width: 100%;
+}
+
+.downloads-page {
+  background: $color-bg;
+  font-family: $font;
+  min-height: 100vh;
+  padding: 0 0 64px;
+}
+
+.downloads-page__connect {
+  text-align: center;
+  color: $color-connect;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: capitalize;
+  padding: 24px 0 8px;
+}
+
+.downloads-section {
+  padding: 20px 24px 32px;
+  max-width: 560px;
+  margin: 0 auto;
+
+  @media (max-width: 480px) {
+    padding: 16px 16px 28px;
+  }
+}
+
+.downloads-section__header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.downloads-section__title {
+  font-size: 20px;
+  font-weight: 700;
+  color: $color-text-head;
+  margin: 0 0 10px;
+  letter-spacing: -0.01em;
+
+  // "Alternative downloads" — smaller, muted label style
+  &--alt {
+    font-size: 14px;
+    font-weight: 400;
+    color: $color-alt-label;
+    margin: 8px 0 0;
+  }
+}
+
+.downloads-section__desc {
+  font-size: 13.5px;
+  color: $color-text-desc;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.downloads-section__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.downloads-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+
+  @media (max-width: 400px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.downloads-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: $btn-height;
+  border-radius: $radius-btn;
+  background-color: $color-accent;
+  color: $color-accent-text;
+  text-decoration: none;
+  font-family: $font;
+  font-size: 13.5px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  padding: 0 20px;
+  cursor: pointer;
+  transition: background-color 0.18s ease, transform 0.12s ease;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  &:hover {
+    background-color: $color-accent-dark;
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.downloads-btn__icon {
+  font-size: 18px !important;
+  width: 18px !important;
+  height: 18px !important;
+  line-height: 18px !important;
+  flex-shrink: 0;
+}

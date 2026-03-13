@@ -1,0 +1,76 @@
+<div class="servers-page">
+
+  <!-- World map watermark -->
+  <div class="servers-page__map-bg" aria-hidden="true">
+    <svg viewBox="0 0 1000 500" xmlns="http://www.w3.org/2000/svg" class="map-svg">
+      <!-- Simplified world map silhouette paths -->
+      <!-- North America -->
+      <path d="M80,80 L180,70 L220,90 L240,130 L210,160 L190,200 L160,230 L130,240 L100,220 L70,190 L60,150 L70,110 Z" fill="currentColor"/>
+      <!-- South America -->
+      <path d="M160,250 L200,240 L220,260 L230,300 L220,340 L200,370 L170,360 L150,330 L145,290 L150,260 Z" fill="currentColor"/>
+      <!-- Europe -->
+      <path d="M430,60 L480,55 L510,70 L520,95 L500,110 L470,115 L445,105 L430,85 Z" fill="currentColor"/>
+      <!-- Africa -->
+      <path d="M450,130 L500,120 L530,140 L545,180 L540,230 L520,270 L490,280 L460,265 L440,230 L435,180 L440,150 Z" fill="currentColor"/>
+      <!-- Asia -->
+      <path d="M530,50 L650,40 L720,60 L750,90 L740,130 L700,150 L660,155 L620,140 L580,120 L545,100 L530,75 Z" fill="currentColor"/>
+      <!-- Oceania -->
+      <path d="M720,280 L780,270 L810,285 L815,310 L795,325 L760,320 L730,305 Z" fill="currentColor"/>
+      <!-- Russia -->
+      <path d="M520,30 L700,20 L760,40 L755,65 L700,70 L620,65 L540,55 Z" fill="currentColor"/>
+      <!-- Indonesia -->
+      <path d="M680,220 L730,215 L755,225 L750,245 L720,248 L690,240 Z" fill="currentColor"/>
+      <path d="M760,218 L795,212 L815,222 L810,238 L775,240 Z" fill="currentColor"/>
+    </svg>
+  </div>
+
+  <!-- Hero -->
+  <header class="servers-hero">
+    <h1 class="servers-hero__title">Borderless VPN servers</h1>
+
+    <div class="servers-hero__features">
+      <h2 class="servers-hero__features-heading">Reliable and stable servers</h2>
+      <ul class="servers-hero__features-list" role="list">
+        @for (feat of features; track feat) {
+          <li class="servers-hero__feature-item">
+            <mat-icon class="servers-hero__check" aria-hidden="true">check</mat-icon>
+            <span>{{ feat }}</span>
+          </li>
+        }
+      </ul>
+    </div>
+  </header>
+
+  <!-- Server regions -->
+  <main class="servers-content">
+    @for (region of regions; track region.id) {
+      <section
+        class="servers-region"
+        [attr.aria-labelledby]="'region-' + region.id"
+      >
+        <h2
+          class="servers-region__title"
+          [id]="'region-' + region.id"
+        >
+          {{ region.name }}
+        </h2>
+
+        <div class="servers-grid">
+          @for (server of region.servers; track server.id) {
+            <article class="server-card" [attr.aria-label]="server.country + ', ' + server.city">
+              <div class="server-card__flag" aria-hidden="true">
+                <span class="server-card__flag-emoji">{{ server.flagEmoji }}</span>
+              </div>
+              <div class="server-card__info">
+                <p class="server-card__country">{{ server.country }}</p>
+                <p class="server-card__city">{{ server.city }}</p>
+                <p class="server-card__dns">{{ server.dns }}</p>
+              </div>
+            </article>
+          }
+        </div>
+      </section>
+    }
+  </main>
+
+</div>

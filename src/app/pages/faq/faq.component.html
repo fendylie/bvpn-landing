@@ -1,0 +1,27 @@
+<div class="faq-page">
+
+  <header class="faq-page__header">
+    <h1 class="faq-page__title">Frequently Asked Questions</h1>
+  </header>
+
+  <main class="faq-page__body">
+    <div class="faq-grid">
+      @for (category of categories; track category.id) {
+        <section
+          class="faq-category"
+          [class.faq-category--full]="isFullWidth(category.id)"
+          [attr.aria-labelledby]="'cat-' + category.id"
+        >
+          <h2 class="faq-category__title" [id]="'cat-' + category.id">
+            {{ category.title }}
+          </h2>
+
+          <ui-accordion
+            [items]="category.items"
+            [categoryTitle]="category.title"
+          />
+        </section>
+      }
+    </div>
+  </main>
+</div>

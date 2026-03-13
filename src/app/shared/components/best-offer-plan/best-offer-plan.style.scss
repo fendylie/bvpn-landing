@@ -1,0 +1,155 @@
+$color-bg:           #e8e8e8;
+$color-card-light:   #ffffff;
+$color-card-dark:    #1e1e1e;
+$color-accent:       #d0392b;
+$color-accent-hover: #b02d21;
+$color-text-dark:    #1a1a1a;
+$color-text-light:   #ffffff;
+$color-text-muted-dark:  #555555;
+$color-text-muted-light: #a0a0a0;
+$font:               'DM Sans', 'Segoe UI', system-ui, sans-serif;
+$radius-card:        16px;
+$radius-btn:         100px;
+$shadow-card:        0 2px 12px rgba(0,0,0,0.08);
+$shadow-card-featured: 0 8px 40px rgba(0,0,0,0.28);
+
+:host {
+  display: block;
+  width: 100%;
+}
+
+.pricing {
+  background-color: $color-bg;
+  padding: 64px 0 72px;
+  font-family: $font;
+  width: 100%;
+}
+
+.pricing__heading {
+  text-align: center;
+  font-size: clamp(24px, 3.5vw, 36px);
+  font-weight: 700;
+  color: $color-text-dark;
+  margin: 0 0 48px;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+.pricing__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  max-width: 900px;
+  margin: 0 auto;
+  align-items: center;
+
+  @media (max-width: 720px) {
+    grid-template-columns: 1fr;
+    max-width: 360px;
+  }
+}
+
+.pricing__card {
+  background: $color-card-light;
+  border-radius: $radius-card;
+  box-shadow: $shadow-card;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 28px rgba(0,0,0,0.13);
+  }
+
+  &--featured {
+    background: $color-card-dark;
+    box-shadow: $shadow-card-featured;
+    transform: scale(1.04);
+    z-index: 1;
+
+    &:hover {
+      transform: scale(1.04) translateY(-3px);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.35);
+    }
+
+    .pricing__plan-name { color: $color-text-light; }
+    .pricing__period    { color: $color-text-muted-light; }
+    .pricing__billing   { color: $color-text-muted-light; }
+  }
+}
+
+.pricing__card-inner {
+  padding: 36px 28px 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  text-align: center;
+}
+
+.pricing__plan-name {
+  font-size: 15px;
+  font-weight: 500;
+  color: $color-text-dark;
+  margin: 0 0 16px;
+  letter-spacing: 0.01em;
+}
+
+.pricing__price-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 6px;
+}
+
+.pricing__price {
+  font-size: clamp(36px, 5vw, 48px);
+  font-weight: 700;
+  color: $color-accent;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.pricing__period {
+  font-size: 13px;
+  color: $color-text-muted-dark;
+  font-weight: 400;
+}
+
+.pricing__billing {
+  font-size: 12.5px;
+  color: $color-text-muted-dark;
+  margin: 20px 0 28px;
+  line-height: 1.4;
+  min-height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pricing__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $color-accent !important;
+  color: #ffffff !important;
+  border-radius: $radius-btn !important;
+  font-family: $font;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  padding: 0 32px !important;
+  height: 42px;
+  min-width: 120px;
+  text-decoration: none;
+  box-shadow: none !important;
+  transition: background-color 0.18s ease, transform 0.12s ease !important;
+
+  &:hover {
+    background-color: $color-accent-hover !important;
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}

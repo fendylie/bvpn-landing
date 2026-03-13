@@ -1,0 +1,97 @@
+// =========================================
+// Borderless VPN — FAQ Page
+// =========================================
+
+$color-bg:           #ffffff;
+$color-text-primary: #1a1a1a;
+$color-category-title: #1a1a1a;
+$font:               'DM Sans', 'Segoe UI', system-ui, sans-serif;
+$bp-md:              700px;
+
+:host { display: block; width: 100%; }
+
+// =========================================
+// Page shell
+// =========================================
+.faq-page {
+  background: $color-bg;
+  font-family: $font;
+  min-height: 100vh;
+  padding-bottom: 80px;
+}
+
+// =========================================
+// Header
+// =========================================
+.faq-page__header {
+  text-align: center;
+  padding: 52px 24px 36px;
+}
+
+.faq-page__title {
+  font-size: clamp(24px, 4vw, 38px);
+  font-weight: 700;
+  color: $color-text-primary;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+// =========================================
+// Body
+// =========================================
+.faq-page__body {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 32px;
+
+  @media (max-width: $bp-md) {
+    padding: 0 20px;
+  }
+}
+
+// =========================================
+// 2-column grid — last odd item spans full
+// =========================================
+.faq-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px 64px;
+
+  @media (max-width: $bp-md) {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+
+// =========================================
+// Category block
+// =========================================
+.faq-category {
+  min-width: 0;
+
+  // "Port Forwarding" is the 5th item — span both columns on desktop
+  &--full {
+    grid-column: 1 / -1;
+
+    // Constrain the accordion width to half so it doesn't stretch too wide
+    app-accordion {
+      display: block;
+      max-width: 420px;
+    }
+
+    @media (max-width: $bp-md) {
+      grid-column: auto;
+      app-accordion {
+        max-width: 100%;
+      }
+    }
+  }
+}
+
+.faq-category__title {
+  font-size: 14px;
+  font-weight: 600;
+  color: $color-category-title;
+  margin: 0 0 4px;
+  letter-spacing: 0.01em;
+}
